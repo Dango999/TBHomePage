@@ -34,6 +34,7 @@
     font-size: 0px;
     height: 35px;
     border-bottom: 1px solid #eee;
+    position: relative;
 }
 
 #headMessage a{
@@ -71,6 +72,50 @@
     font-size: 12px;
     color: #ddd;
     padding: 0 5px;
+}
+
+#headMessage li .country{
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    display: none;
+    margin-top: -5px;
+    height: 270px;
+    width: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#headMessage li .country ul{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 8px 0;
+    line-height: normal;
+    border: 1px solid #FFF;
+    background: #FFF;
+}
+
+#headMessage li .country ul li{
+    width: 242px;
+    height: 29px;
+    font-size: 12px;
+    line-height: 29px;
+    padding: 0 0 0 8px;
+    cursor: pointer;
+    border: 0;
+}
+
+#headMessage li .country ul li:hover{
+    background-color: #f5f5f5;
+}
+
+#headMessage .Cou:hover{
+    background-color: #FFF;
+}
+
+#headMessage .Cou:hover .country{
+    display: block;
 }
 
 /* 头部搜索 */
@@ -310,7 +355,7 @@
 }
 
 #main .leftL ul li{
-    overflow: hidden;
+    /* overflow: hidden; */
     line-height: 32px;
     height: 32px;
     padding-left: 25px;
@@ -348,6 +393,148 @@
     text-decoration:underline;
 }
 
+#main .leftL .more{
+    display: none;
+    padding: 0 0 0 18px;
+    width: 692px;
+    height: 518px;
+    border: 2px solid #F94A14;
+    box-shadow: 2px 2px 0 #dcdadb;
+    background-color: #FFF;
+    color: #333;
+    font-size: 12px;
+    z-index: 5;
+}
+
+#main .leftL .more.pop0{
+    position: absolute;
+    left: 188px;
+    top: -6px;
+}
+
+#main .leftL .more.pop1{
+    position: absolute;
+    left: 188px;
+    top: -40px;
+}
+
+#main .leftL .more.pop2{
+    position: absolute;
+    left: 188px;
+    top: -414px;
+}
+
+#main .leftL ul li:hover .more{
+    display: block;
+}
+
+#main .leftL .more .items{
+    padding-top: 10px;
+    width: 415px;
+    height: 490px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 12px;
+    padding-left: 10px;
+    float: left;
+}
+
+#main .leftL .more .items .service-panel{
+    font-size: 12px;
+    margin-bottom: 5px;
+    width: 50%;
+    float: left;
+}
+
+#main .leftL .more .items .service-panel.full{
+    width: 100%;
+}
+
+#main .items .service-panel h5{
+    position: relative;
+    height: 34px;
+    line-height: 34px;
+    font-size: 16px;
+    color: #333;
+}
+
+#main .items .service-panel p{
+    overflow: hidden;
+    line-height: 26px;
+}
+
+#main .items .service-panel p a{
+    color: #666;
+    display: inline-block;
+    margin-right: 12px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+#main .leftL .more .like{
+    float: left;
+    width: 253px;
+    border-left: 1px solid #f4f4f4;
+    position: relative;
+    height: 498px;
+    padding-top: 20px;
+}
+
+#main .like h3{
+    line-height: 18px;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 400;
+}
+
+#main .leftL .more .like a{
+    display: block;
+    width: 97px;
+    height: 143px;
+    padding: 10px 0 0 20px;
+    overflow: hidden;
+    text-decoration:none;
+}
+
+#main .leftL .more .like a:hover span{
+    color: #f40;
+}
+
+#main .like a div{
+    width: 97px;
+    height: 97px;
+    overflow: hidden;
+    background: #4f4f4f;
+}
+
+#main .like a div img{
+    display: block;
+    width: 98px;
+    height: 97px;
+    background: #fff;
+    transition: all .2s;
+    opacity: .9;
+}
+
+#main .like a h5{
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    overflow: hidden;
+    font-weight: 400;
+    color: #999;
+}
+
+#main .like a h5:hover{
+    color: #ff5000;
+}
+
+#main .like a h5 span{
+    transition: all .2s;
+    position: static;
+}
+
 /* 中间图片 */
 /* 轮播图 */
 #main .left .leftM{
@@ -359,7 +546,21 @@
 
 .left .pic{
     height: 280px;
+    overflow: hidden;
     position: relative;
+}
+
+.left .pic .wrap{
+    position: absolute;
+    width: 3640px;
+    height: 280px;
+    z-index: 1;
+}
+
+.left .pic .wrap .img{
+    float: left;
+    width: 520px;
+    height: 280px;
 }
 
 .left .leftM button{
@@ -379,6 +580,7 @@
     top: 50%;
     margin-top: -15px;
     display: none;
+    z-index: 2;
 }
 
 .left .leftM button.LBtn{
@@ -404,9 +606,10 @@
     padding: 3px 0;
     font-size: 0;
     margin-left: -35px;
+    z-index: 2;
 }
 
-.left .pic .circle span{
+.left .pic .circle em{
     display: inline-block;
     width: 8px;
     height: 8px;
@@ -416,7 +619,7 @@
     cursor: pointer;
 }
 
-.left .pic .circle span.active{
+.left .pic .circle em.active{
     background-color: #ff5000;
 }
 
@@ -851,7 +1054,7 @@
     line-height: 24px;
 }
 
-#goods h3 em{
+#goods h3 strong{
     font-style: normal;
     position: absolute;
     left: -1999px;
