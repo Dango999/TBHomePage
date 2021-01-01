@@ -11,6 +11,8 @@
 	<link rel="icon" href="favicon.ico">
 	<!-- <link href="//img.alicdn.com/tps/i3/T1OjaVFl4dXXa.JOZB-114-114.png" rel="icon"> -->
 	<base target="_blank">
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
 	<script src="js/tools.js"></script>
 </head>
 <body>
@@ -965,7 +967,7 @@
 			<div class="leftM fl">
 				<!-- 轮播图 -->
 				<div class="pic">
-					<div class="wrap" style="left: -520px;">
+					<div class="wrap">
 						<div class="img">
 							<a href="#">
 								<img src="https://img.alicdn.com/imgextra/i1/6000000001945/O1CN01H8Qob61QEqzQeztaE_!!6000000001945-0-octopus.jpg" alt="">
@@ -989,16 +991,6 @@
 						<div class="img">
 							<a href="#">
 								<img src="https://aecpm.alicdn.com/simba/img/TB183NQapLM8KJjSZFBSutJHVXa.jpg" alt="">
-							</a>
-						</div>
-						<div class="img">
-							<a href="#">
-								<img src="https://img.alicdn.com/imgextra/i1/6000000001945/O1CN01H8Qob61QEqzQeztaE_!!6000000001945-0-octopus.jpg" alt="">
-							</a>
-						</div>
-						<div class="img">
-							<a href="#">
-								<img src="https://img.alicdn.com/imgextra/i1/6000000006554/O1CN01t3QMgb1yHmSUi5bk4_!!6000000006554-0-octopus.jpg" alt="">
 							</a>
 						</div>
 					</div>
@@ -1280,87 +1272,5 @@
 			<a href="#">暴恐<br>举报</a>
 		</div>
 	</div>
-	
-	<script>
-		var wrap = document.querySelector(".wrap");
-		var next = document.querySelector(".RBtn");
-		var prev = document.querySelector(".LBtn");
-		next.onclick = function () {
-			next_pic();
-		}
-		prev.onclick = function () {
-			prev_pic();
-		}
-		function next_pic () {
-			index++;
-			if(index > 4){
-				index = 0;
-			}
-			showCurrentDot();
-			var newLeft;
-			if(wrap.style.left === "-3120px"){
-				newLeft = -1040;
-			}else{
-				newLeft = parseInt(wrap.style.left)-520;
-			}
-			wrap.style.left = newLeft + "px";
-		}
-		function prev_pic () {
-			index--;
-			if(index < 0){
-				index = 4;
-			}
-			showCurrentDot();
-			var newLeft;
-			if(wrap.style.left === "0px"){
-				newLeft = -2080;
-			}else{
-				newLeft = parseInt(wrap.style.left)+520;
-			}
-			wrap.style.left = newLeft + "px";
-		}
-		var timer = null;
-		function autoPlay () {
-			timer = setInterval(function () {
-				next_pic();
-			},5000);
-		}
-		autoPlay();
-	 
-		var pic = document.querySelector(".pic");
-		pic.onmouseenter = function () {
-			clearInterval(timer);
-		}
-		pic.onmouseleave = function () {
-			autoPlay();  
-		}
-	 
-		var index = 0;
-		var dots = document.getElementsByTagName("em");
-		function showCurrentDot () {
-			for(var i = 0, len = dots.length; i < len; i++){
-				dots[i].className = "";
-			}
-			dots[index].className = "active";
-		}
-	 
-		for (var i = 0, len = dots.length; i < len; i++){
-			(function(i){
-				dots[i].onclick = function () {
-					var dis = index - i;
-					if(index == 4 && parseInt(wrap.style.left)!==-2600){
-						dis = dis - 5;   
-					}
-			  		//和使用prev和next相同，在最开始的照片5和最终的照片1在使用时会出现问题，导致符号和位数的出错，做相应地处理即可
-			  		if(index == 0 && parseInt(wrap.style.left)!== -520){
-						dis = 5 + dis;
-			  		}
-			  		wrap.style.left = (parseInt(wrap.style.left) + dis * 520)+"px";
-			  		index = i;
-			  		showCurrentDot();
-				}
-		  	})(i);      
-		}
-	</script>
 </body>
 </html>
